@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Generate changelog
+        id: changelog
+        uses: jaywcjlove/changelog-generator@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          filter-author: (renovate|dependabot|github-actions)
+          filter: '[R|r]elease[d]\s+[v|V]\d+(\.\d+){0,2}'
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
+
+            ## Installation
+            ```bash
+            npm install -g shido@${{ github.ref_name }}
+            ```
+
+            ## What's Changed
+            See the [CHANGELOG.md](CHANGELOG.md) for detailed changes.
+          draft: false
+          prerelease: false

@@ -1,0 +1,84 @@
+name: "Node.js/Backend Template"
+prompts:
+  - name: "api-review"
+    content: |
+      Please review this API endpoint for:
+      - Security vulnerabilities
+      - Error handling
+      - Performance considerations
+      - RESTful design principles
+      - Input validation
+      - Documentation completeness
+
+      Endpoint: {{endpoint}}
+      Method: {{method}}
+      Code: {{code}}
+    tags: ["nodejs", "api", "review", "backend"]
+    createdAt: 2024-01-01T00:00:00.000Z
+    updatedAt: 2024-01-01T00:00:00.000Z
+
+  - name: "debug-async"
+    content: |
+      I'm having issues with this async code in Node.js:
+
+      {{code}}
+
+      Error: {{error}}
+
+      Expected behavior: {{expected}}
+
+      Please help me debug this async/await or Promise-related issue.
+    tags: ["nodejs", "debug", "async", "promises"]
+    createdAt: 2024-01-01T00:00:00.000Z
+    updatedAt: 2024-01-01T00:00:00.000Z
+
+  - name: "database-optimize"
+    content: |
+      Please help me optimize this database query/operation:
+
+      Database: {{database}}
+      Query/Code: {{query}}
+
+      Current performance issues: {{issues}}
+
+      Focus areas:
+      - Query optimization
+      - Indexing strategies
+      - N+1 query problems
+      - Connection pooling
+      - Caching opportunities
+    tags: ["database", "optimization", "performance"]
+    createdAt: 2024-01-01T00:00:00.000Z
+    updatedAt: 2024-01-01T00:00:00.000Z
+
+rules:
+  - name: "suggest-api-review"
+    condition: "file.includes('route') || file.includes('controller') || file.includes('api')"
+    action: "suggest-prompt"
+    params:
+      prompt: "api-review"
+      message: "Review this API endpoint?"
+
+  - name: "suggest-async-debug"
+    condition: "content.includes('async') || content.includes('await') || content.includes('Promise')"
+    action: "suggest-prompt"
+    params:
+      prompt: "debug-async"
+      message: "Need help with async code?"
+
+settings:
+  defaultService: "claude"
+  autoSync: true
+  projectDir: ".shido"
+  globalPromptsFirst: true
+  excludePatterns:
+    - "node_modules"
+    - ".git"
+    - "dist"
+    - "logs"
+    - "*.log"
+
+integrations:
+  autoGenerate: true
+  combineGlobal: true
+  symlinkPaths: {}

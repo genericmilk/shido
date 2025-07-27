@@ -1,0 +1,78 @@
+name: "React Project Template"
+prompts:
+  - name: "component-review"
+    content: |
+      Please review this React component for:
+      - Best practices and React patterns
+      - Performance optimizations
+      - Accessibility considerations
+      - TypeScript usage (if applicable)
+      - Testing recommendations
+
+      Component: {{component}}
+    tags: ["react", "review", "component"]
+    createdAt: 2024-01-01T00:00:00.000Z
+    updatedAt: 2024-01-01T00:00:00.000Z
+
+  - name: "debug-hook"
+    content: |
+      I'm having issues with this React hook: {{hook}}
+
+      Problem description: {{problem}}
+
+      Expected behavior: {{expected}}
+      Actual behavior: {{actual}}
+
+      Please help me debug this issue and suggest improvements.
+    tags: ["react", "debug", "hooks"]
+    createdAt: 2024-01-01T00:00:00.000Z
+    updatedAt: 2024-01-01T00:00:00.000Z
+
+  - name: "optimize-performance"
+    content: |
+      Please help me optimize the performance of this React component/app:
+
+      {{code}}
+
+      Specific areas to focus on:
+      - Re-renders and unnecessary updates
+      - Bundle size optimization
+      - Memory leaks
+      - Lazy loading opportunities
+      - State management efficiency
+    tags: ["react", "performance", "optimization"]
+    createdAt: 2024-01-01T00:00:00.000Z
+    updatedAt: 2024-01-01T00:00:00.000Z
+
+rules:
+  - name: "suggest-component-review"
+    condition: "file.endsWith('.jsx') || file.endsWith('.tsx')"
+    action: "suggest-prompt"
+    params:
+      prompt: "component-review"
+      message: "Would you like to review this component?"
+
+  - name: "suggest-hook-debug"
+    condition: "file.includes('use') && (file.endsWith('.js') || file.endsWith('.ts'))"
+    action: "suggest-prompt"
+    params:
+      prompt: "debug-hook"
+      message: "Having issues with this hook?"
+
+settings:
+  defaultService: "claude"
+  autoSync: true
+  templatePath: "src/components"
+  projectDir: ".shido"
+  globalPromptsFirst: true
+  excludePatterns:
+    - "node_modules"
+    - ".git"
+    - "dist"
+    - "build"
+    - "coverage"
+
+integrations:
+  autoGenerate: true
+  combineGlobal: true
+  symlinkPaths: {}
