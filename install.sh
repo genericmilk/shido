@@ -28,7 +28,7 @@ echo "✅ Node.js version: $NODE_VERSION"
 
 # Install Shido globally
 echo "📦 Installing Shido globally..."
-npm install -g shido
+npm install -g shidoai
 
 # Verify installation
 if command -v shido &> /dev/null; then
@@ -51,6 +51,6 @@ if command -v shido &> /dev/null; then
     echo "Documentation: https://github.com/yourusername/shido#readme"
 else
     echo "❌ Installation failed. Please try again or install manually:"
-    echo "   npm install -g shido"
+    echo "   npm install -g shidoai"
     exit 1
 fi

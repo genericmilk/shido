@@ -1,5 +1,5 @@
 {
-	"name": "shido",
+	"name": "shidoai",
 	"version": "1.1.0",
 	"description": "System-wide AI prompts manager for Claude Code, Gemini CLI, Copilot, Cursor and more with per-project rules and seamless AI tool integration",
 	"main": "dist/index.js",

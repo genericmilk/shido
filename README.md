@@ -5,22 +5,23 @@
   
   <p><strong>Unified AI prompt management for GitHub Copilot, Cursor, Claude, Gemini, and more</strong></p>
 
-  [![npm version](https://badge.fury.io/js/shido.svg)](https://badge.fury.io/js/shido)
-  [![Build Status](https://github.com/yourusername/shido/workflows/CI/badge.svg)](https://github.com/yourusername/shido/actions)
-  [![CodeQL](https://github.com/yourusername/shido/workflows/CodeQL/badge.svg)](https://github.com/yourusername/shido/actions)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
-  [![Downloads](https://img.shields.io/npm/dm/shido.svg)](https://www.npmjs.com/package/shido)
-  [![GitHub stars](https://img.shields.io/github/stars/yourusername/shido.svg?style=social&label=Star)](https://github.com/yourusername/shido)
-  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![npm version](https://badge.fury.io/js/shidoai.svg)](https://badge.fury.io/js/shidoai)
+[![Build Status](https://github.com/genericmilk/shido/workflows/CI/badge.svg)](https://github.com/genericmilk/shido/actions)
+[![CodeQL](https://github.com/genericmilk/shido/workflows/CodeQL/badge.svg)](https://github.com/genericmilk/shido/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Downloads](https://img.shields.io/npm/dm/shidoai.svg)](https://www.npmjs.com/package/shidoai)
+[![GitHub stars](https://img.shields.io/github/stars/genericmilk/shido.svg?style=social&label=Star)](https://github.com/genericmilk/shido)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-  [Installation](#installation) •
-  [Quick Start](#quick-start) •
-  [Features](#features) •
-  [Documentation](#documentation) •
-  [Examples](#examples) •
-  [Contributing](#contributing)
+[Installation](#installation) •
+[Quick Start](#quick-start) •
+[Features](#features) •
+[Documentation](#documentation) •
+[Examples](#examples) •
+[Contributing](#contributing)
+
 </div>
 
 ---
@@ -62,18 +63,18 @@ Shido is a powerful npm global package that revolutionizes AI prompt management 
 🔄 **Automatic Synchronization** - Changes propagate to all AI tools instantly  
 🎯 **Format Optimization** - Each tool gets prompts in its preferred format  
 🔗 **Seamless Integration** - Symlinks make it transparent to your workflow  
-👥 **Team Collaboration** - Easy to share and maintain across teams  
+👥 **Team Collaboration** - Easy to share and maintain across teams
 
 ## Demo
 
-<!-- ![Shido Demo](https://github.com/yourusername/shido/raw/main/demo.gif) -->
+<!-- ![Shido Demo](https://github.com/genericmilk/shido/raw/main/demo.gif) -->
 
 _Coming soon: Interactive demo showing Shido in action with multiple AI tools_
 
 ## Installation
 
 ```bash
-npm install -g shido
+npm install -g shidoai
 ```
 
 ## Quick Start
@@ -82,7 +83,7 @@ npm install -g shido
 
 ```bash
 # Install Shido globally
-npm install -g shido
+npm install -g shidoai
 
 # Setup AI service integrations
 shido setup
@@ -456,7 +457,7 @@ git diff | shido use code-review --service claude
 Shido can also be used programmatically:
 
 ```javascript
-const { ShidoCore } = require("shido");
+const { ShidoCore } = require("shidoai");
 
 const shido = new ShidoCore();
 
@@ -480,7 +481,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/shido.git
+git clone https://github.com/genericmilk/shido.git
 cd shido
 
 # Install dependencies
@@ -510,9 +511,9 @@ MIT © [Your Name]
 
 ## Support & Community
 
-- 📚 [Documentation](https://github.com/yourusername/shido#readme)
-- 🐛 [Issue Tracker](https://github.com/yourusername/shido/issues)
-- 💬 [Discussions](https://github.com/yourusername/shido/discussions)
+- 📚 [Documentation](https://github.com/genericmilk/shido#readme)
+- 🐛 [Issue Tracker](https://github.com/genericmilk/shido/issues)
+- 💬 [Discussions](https://github.com/genericmilk/shido/discussions)
 - 🆘 [Stack Overflow](https://stackoverflow.com/questions/tagged/shido)
 
 ## Acknowledgments
@@ -532,7 +533,7 @@ MIT © [Your Name]
   
   <br><br>
   
-  [![GitHub stars](https://img.shields.io/github/stars/yourusername/shido.svg?style=social&label=Star)](https://github.com/yourusername/shido)
-  [![GitHub followers](https://img.shields.io/github/followers/yourusername.svg?style=social&label=Follow)](https://github.com/yourusername)
-  [![Twitter Follow](https://img.shields.io/twitter/follow/yourusername.svg?style=social)](https://twitter.com/yourusername)
+  [![GitHub stars](https://img.shields.io/github/stars/genericmilk/shido.svg?style=social&label=Star)](https://github.com/genericmilk/shido)
+  [![GitHub followers](https://img.shields.io/github/followers/genericmilk.svg?style=social&label=Follow)](https://github.com/genericmilk)
+  [![Twitter Follow](https://img.shields.io/twitter/follow/itspeterday.svg?style=social)](https://twitter.com/itspeterday)
 </div>
