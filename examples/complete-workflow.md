@@ -6,7 +6,7 @@ This example demonstrates the enhanced Shido workflow with system-wide + project
 
 ```bash
 # Install Shido globally
-npm install -g shido
+npm install -g shidoai
 
 # Setup AI service integrations
 shido setup

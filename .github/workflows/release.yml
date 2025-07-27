@@ -55,7 +55,7 @@ jobs:
 
             ## Installation
             ```bash
-            npm install -g shido@${{ github.ref_name }}
+            npm install -g shidoai@${{ github.ref_name }}
             ```
 
             ## What's Changed

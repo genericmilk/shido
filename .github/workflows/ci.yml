@@ -63,5 +63,5 @@ jobs:
       - name: Test CLI installation
         run: |
           npm pack
-          npm install -g ./shido-*.tgz
+          npm install -g ./shidoai-*.tgz
           shido --version
