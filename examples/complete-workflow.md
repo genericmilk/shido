@@ -8,7 +8,11 @@ This example demonstrates the enhanced Shido workflow with system-wide + project
 # Install Shido globally
 npm install -g shidoai
 
-# Setup AI service integrations
+# Optional: Install AI CLI tools for full integration
+npm install -g @anthropic-ai/claude-code  # Claude Code CLI
+npm install -g @google/gemini-cli         # Gemini CLI
+
+# Setup AI service integrations (detects installed tools)
 shido setup
 
 # Add some global prompts that you'll use across all projects

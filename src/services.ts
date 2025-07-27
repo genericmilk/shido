@@ -51,8 +51,8 @@ export class ServiceIntegration {
 				name: "selectedServices",
 				message: "Select services to configure:",
 				choices: [
-					{ name: "Claude", value: "claude" },
-					{ name: "Gemini", value: "gemini" },
+					{ name: "Claude Code CLI", value: "claude" },
+					{ name: "Gemini CLI", value: "gemini" },
 					{ name: "GitHub Copilot", value: "copilot" },
 					{ name: "Cursor", value: "cursor" },
 				],
@@ -65,73 +65,93 @@ export class ServiceIntegration {
 	}
 
 	private async setupClaude(services: ServiceConfig): Promise<void> {
-		console.log(chalk.blue("\nSetting up Claude integration..."));
+		console.log(chalk.blue("\nSetting up Claude Code CLI integration..."));
 
 		const answers = await inquirer.prompt([
 			{
 				type: "confirm",
 				name: "enabled",
-				message: "Enable Claude integration?",
+				message: "Enable Claude Code CLI integration?",
 				default: services.claude?.enabled || false,
-			},
-			{
-				type: "input",
-				name: "apiKey",
-				message: "Claude API key (optional):",
-				when: (answers) => answers.enabled,
-				default: services.claude?.apiKey || "",
-			},
-			{
-				type: "list",
-				name: "model",
-				message: "Default Claude model:",
-				when: (answers) => answers.enabled,
-				choices: ["claude-3-sonnet", "claude-3-haiku", "claude-3-opus"],
-				default: services.claude?.model || "claude-3-sonnet",
 			},
 		]);
 
 		if (answers.enabled) {
-			await this.configManager.setConfigValue("services.claude", {
-				enabled: true,
-				apiKey: answers.apiKey || undefined,
-				model: answers.model,
-			});
-			console.log(chalk.green("✓ Claude configured"));
+			// Check if Claude Code CLI is installed
+			try {
+				const { execSync } = require("child_process");
+				execSync("claude --version", { stdio: "ignore" });
+
+				await this.configManager.setConfigValue("services.claude", {
+					enabled: true,
+				});
+				console.log(chalk.green("✓ Claude Code CLI configured"));
+				console.log(
+					chalk.gray(
+						"Note: Claude Code CLI handles its own authentication. Run 'claude' in your terminal to get started."
+					)
+				);
+			} catch (error) {
+				console.log(chalk.yellow("⚠ Claude Code CLI not found"));
+				console.log(
+					chalk.gray(
+						"Install it with: npm install -g @anthropic-ai/claude-code"
+					)
+				);
+				console.log(chalk.gray("Then run 'shido setup claude' again"));
+
+				await this.configManager.setConfigValue("services.claude", {
+					enabled: false,
+				});
+			}
 		} else {
 			await this.configManager.setConfigValue("services.claude.enabled", false);
-			console.log(chalk.yellow("Claude disabled"));
+			console.log(chalk.yellow("Claude Code CLI disabled"));
 		}
 	}
 
 	private async setupGemini(services: ServiceConfig): Promise<void> {
-		console.log(chalk.blue("\nSetting up Gemini integration..."));
+		console.log(chalk.blue("\nSetting up Gemini CLI integration..."));
 
 		const answers = await inquirer.prompt([
 			{
 				type: "confirm",
 				name: "enabled",
-				message: "Enable Gemini integration?",
+				message: "Enable Gemini CLI integration?",
 				default: services.gemini?.enabled || false,
-			},
-			{
-				type: "input",
-				name: "apiKey",
-				message: "Gemini API key (optional):",
-				when: (answers) => answers.enabled,
-				default: services.gemini?.apiKey || "",
 			},
 		]);
 
 		if (answers.enabled) {
-			await this.configManager.setConfigValue("services.gemini", {
-				enabled: true,
-				apiKey: answers.apiKey || undefined,
-			});
-			console.log(chalk.green("✓ Gemini configured"));
+			// Check if Gemini CLI is installed
+			try {
+				const { execSync } = require("child_process");
+				execSync("gemini --version", { stdio: "ignore" });
+
+				await this.configManager.setConfigValue("services.gemini", {
+					enabled: true,
+				});
+				console.log(chalk.green("✓ Gemini CLI configured"));
+				console.log(
+					chalk.gray(
+						"Note: Gemini CLI handles its own authentication. Run 'gemini' in your terminal to get started."
+					)
+				);
+			} catch (error) {
+				console.log(chalk.yellow("⚠ Gemini CLI not found"));
+				console.log(
+					chalk.gray("Install it with: npm install -g @google/gemini-cli")
+				);
+				console.log(chalk.gray("Or with Homebrew: brew install gemini-cli"));
+				console.log(chalk.gray("Then run 'shido setup gemini' again"));
+
+				await this.configManager.setConfigValue("services.gemini", {
+					enabled: false,
+				});
+			}
 		} else {
 			await this.configManager.setConfigValue("services.gemini.enabled", false);
-			console.log(chalk.yellow("Gemini disabled"));
+			console.log(chalk.yellow("Gemini CLI disabled"));
 		}
 	}
 

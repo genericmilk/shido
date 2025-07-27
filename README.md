@@ -1,19 +1,24 @@
 # Shido - System-wide AI Prompts Manager
 
 <div align="center">
-  <img src="badge.png" alt="Shido Logo" width="200" height="200">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="badge-dark.png">
+    <img src="badge.png" alt="Shido Logo" width="200" height="200" style="border-radius: 30px;">
+  </picture>
   
   <p><strong>Unified AI prompt management for GitHub Copilot, Cursor, Claude, Gemini, and more</strong></p>
 
-[![npm version](https://badge.fury.io/js/shidoai.svg)](https://badge.fury.io/js/shidoai)
-[![Build Status](https://github.com/genericmilk/shido/workflows/CI/badge.svg)](https://github.com/genericmilk/shido/actions)
-[![CodeQL](https://github.com/genericmilk/shido/workflows/CodeQL/badge.svg)](https://github.com/genericmilk/shido/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
-[![Downloads](https://img.shields.io/npm/dm/shidoai.svg)](https://www.npmjs.com/package/shidoai)
-[![GitHub stars](https://img.shields.io/github/stars/genericmilk/shido.svg?style=social&label=Star)](https://github.com/genericmilk/shido)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+<img src="https://badge.fury.io/js/shidoai.svg" alt="npm version" style="border-radius: 30px;">
+<img src="https://github.com/genericmilk/shido/workflows/CI/badge.svg" alt="Build Status" style="border-radius: 30px;">
+<img src="https://github.com/genericmilk/shido/workflows/CodeQL/badge.svg" alt="CodeQL" style="border-radius: 30px;">
+<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" style="border-radius: 30px;">
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript" style="border-radius: 30px;">
+<img src="https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white" alt="Node.js" style="border-radius: 30px;">
+<img src="https://img.shields.io/npm/dm/shidoai.svg" alt="Downloads" style="border-radius: 30px;">
+<img src="https://img.shields.io/github/stars/genericmilk/shido.svg?style=social&label=Star" alt="GitHub stars" style="border-radius: 30px;">
+<img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" style="border-radius: 30px;">
+</div>
 
 [Installation](#installation) •
 [Quick Start](#quick-start) •
@@ -75,6 +80,23 @@ _Coming soon: Interactive demo showing Shido in action with multiple AI tools_
 
 ```bash
 npm install -g shidoai
+```
+
+### Optional: Install AI CLI Tools
+
+For full integration, install the AI CLI tools you plan to use:
+
+```bash
+# Claude Code CLI (official Anthropic tool)
+npm install -g @anthropic-ai/claude-code
+
+# Gemini CLI (official Google tool)
+npm install -g @google/gemini-cli
+# OR with Homebrew
+brew install gemini-cli
+
+# GitHub Copilot is available in VS Code
+# Cursor is a standalone editor - download from https://cursor.sh
 ```
 
 ## Quick Start
@@ -165,8 +187,8 @@ shido combined --format markdown
 ### AI Service Integration
 
 - **Automatic prompt generation**: Creates prompt files in formats optimized for each AI tool
-- **Claude**: Direct integration with Claude API and prompt files
-- **Gemini**: Google Gemini CLI support with compatible formats
+- **Claude Code CLI**: Integration with the official Claude Code CLI tool (`@anthropic-ai/claude-code`)
+- **Gemini CLI**: Google's official Gemini CLI tool (`@google/gemini-cli`) support with compatible formats
 - **GitHub Copilot**: Integration with Copilot workflows and .copilot-prompts.md
 - **Cursor**: Direct integration with Cursor editor and .cursorrules
 - **Symlink support**: Automatically link project prompts to AI tool directories

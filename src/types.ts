@@ -53,13 +53,9 @@ export interface GlobalConfig {
 export interface ServiceConfig {
 	claude?: {
 		enabled: boolean;
-		apiKey?: string;
-		model?: string;
 	};
 	gemini?: {
 		enabled: boolean;
-		apiKey?: string;
-		model?: string;
 	};
 	copilot?: {
 		enabled: boolean;
